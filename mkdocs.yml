@@ -1,0 +1,15 @@
+site_name: Graph Universe Documentation
+
+theme:
+  name: material
+  features:
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+
+nav:
+  - Overview: index.md
+
+plugins:
+  - mkdocstrings
+  - search
