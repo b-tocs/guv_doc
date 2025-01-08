@@ -16,7 +16,7 @@
     
     
       
-        <title>SAP Kyma Installation - Graph Universe Documentation</title>
+        <title>Installation for SAP BTP Kyma and HANA Cloud - Graph Universe Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sap-kyma-installation" class="md-skip">
+        <a href="#installation-for-sap-btp-kyma-and-hana-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SAP Kyma Installation
+              Installation for SAP BTP Kyma and HANA Cloud
             
           </span>
         </div>
@@ -244,6 +244,134 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-hana-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the HANA database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-kyma-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare the Kyma cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare the Kyma cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-secrets-for-hana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the secrets for HANA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-the-guv-api-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check the GUV API Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-further-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion and further information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusion and further information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional services
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -257,8 +385,202 @@
                   
 
 
-<h1 id="sap-kyma-installation">SAP Kyma Installation</h1>
-<p>(coming soon)</p>
+<h1 id="installation-for-sap-btp-kyma-and-hana-cloud">Installation for SAP BTP Kyma and HANA Cloud</h1>
+<p>The Graph Universe (GUV) can be installed on the SAP Business Technology Platform (BTP). The SAP Kyma environment is a Kubernetes (K8S) environment within the SAP BTP. As a persistence layer the SAP HANA Cloud database can be used. </p>
+<p>The required installation steps are described here.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following components are required:</p>
+<ol>
+<li>SAP BTP account</li>
+<li>SAP Kyma Cluster</li>
+<li>SAP HANA Cloud Instance</li>
+</ol>
+<p>You can get a trial acess for free. See the <a href="https://developers.sap.com/tutorial-navigator.html">SAP Developer Tutorials</a> and search for "Kyma" and "HANA".</p>
+<h2 id="check-the-hana-database">Check the HANA database</h2>
+<p>Login to your SAP BTP subaccount and select "Instances and Subscriptions". You should find an installed "SAP HANA Cloud" Application. </p>
+<p><img alt="SAP BTP Instances" src="../res/sap_btp_instances.png" /></p>
+<p>Enter the "HANA Cloud Central" Cockpit by selecting the "SAP HANA Cloud" application.</p>
+<p><img alt="SAP HANA Cloud Central Cockpit" src="../res/sap_hana_cloud_central.png" />.</p>
+<p>Enter the context menu via "Action" and select "Copy SQL Endpoint". </p>
+<p>Your copied endpoint should be like this:</p>
+<p><code>0cf183xx-xxxa-xx71-83xx-5ff37xxx324.hana.trial-us10.hanacloud.ondemand.com:443</code></p>
+<p>Check the DB user and password to access this instance.  </p>
+<h2 id="prepare-the-kyma-cluster">Prepare the Kyma cluster</h2>
+<p>Go to your SAP BTP subaccount "Overview" and check the "Kyma Environment". </p>
+<p><img alt="SAP BTP Kyma" src="../res/sap_btp_kyma.png" /></p>
+<p>Select the "Link to dashboard".</p>
+<p><img alt="SAP Kyma Dashboard" src="../res/sap_btp_kyma_dashboard.png" /></p>
+<h3 id="create-a-namespace">Create a namespace</h3>
+<p>Select <code>Namespaces</code> and <code>Create</code>. </p>
+<p><img alt="SAP Kyma Namespaces" src="../res/sap_btp_kyma_namespace.png" /></p>
+<p>Switch to the "Form" view. Enter a valid name: e.g. <code>guv-demo</code> and confirm with <code>Create</code>. </p>
+<p><img alt="SAP Kyma Namespace creation" src="../res/sap_btp_kyma_namespace_form.png" /></p>
+<p>A new Kyma namespace is visible and You will see an empty dashboard.</p>
+<p><img alt="SAP Kyma Namespace dashboard" src="../res/sap_btp_kyma_namespace_dashboard.png" /></p>
+<h3 id="create-the-secrets-for-hana">Create the secrets for HANA</h3>
+<p>In this step You will create a secret for storing the secret connection information to the HANA Cloud database.</p>
+<p>Enter <code>Configuration</code> and <code>Secret</code>.</p>
+<p><img alt="SAP Kyma Secrets" src="../res/sap_btp_kyma_secrets.png" /></p>
+<p>Select <code>Create</code>. </p>
+<p>Fill the scret form:
+- select the <code>Form</code> view if not selected
+- use <code>guv-db</code>as name for the secret
+- select <code>Type</code> = <code>Opaque</code> 
+- enter <code>hana://</code> + <your hana database endpoint> as parameter <code>url</code>
+- enter your DB User as parameter <code>user</code> - e.g. DBADMIN
+- enter your DB Password as parameter <code>password</code></p>
+<p><img alt="SAP Kyma Secret create" src="../res/sap_btp_kyma_secret_form.png" /></p>
+<p>Select <code>Create</code>.</p>
+<h3 id="create-deployment">Create deployment</h3>
+<p>In this step the required kubernetes artifacts are created by a complex yaml file. </p>
+<p>Enter the <code>Namespace Overview</code> and get your cluster id. You will find this at the top.</p>
+<p><img alt="SAP BTP Dashboard for cluster id" src="../res/sap_btp_kyma_dashboard_deployment.png" /></p>
+<p>Copy the following yaml snippet to the clipboard.</p>
+<pre><code class="language-yaml">kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: guv-srv-data
+  labels:
+    app: guv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guv-api
+  labels:
+    app: guv
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: guv
+  template:
+    metadata:
+      labels:
+        app: guv
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: guv-api
+          image: ghcr.io/b-tocs/btocs_guvapi
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: SERVER_ROLE
+              value: &quot;demo&quot;
+            - name: PYTHONUNBUFFERED
+              value: &quot;1&quot;
+            - name: B2X_RESTAPI_CORS_ENABLED
+              value: &quot;true&quot;
+            - name: B2X_RESTAPI_CORS_HOSTS
+              value: '[&quot;*&quot;]'
+            - name: B2X_RESTAPI_CORS_METHODS
+              value: '[&quot;*&quot;]'
+            - name: B2X_RESTAPI_CORS_HEADERS
+              value: '[&quot;*&quot;]'
+            - name: B2X_REDIS_DEFAULT_HOST
+              value: guv-kvc
+            - name: DB_CONNECT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: guv-db
+                  key: url
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: guv-db
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: guv-db
+                  key: password
+          volumeMounts:
+            - name: guv-srv-data
+              mountPath: /data
+      volumes:
+        - name: guv-srv-data
+          persistentVolumeClaim:
+            claimName: guv-srv-data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: guv-api
+  labels:
+    app: guv
+spec:
+  selector:
+    app: guv
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+
+---
+apiVersion: gateway.kyma-project.io/v1beta1
+kind: APIRule
+metadata:
+  labels:
+    app.kubernetes.io/name: guv-demo-api
+  name: guv-demo-api
+  namespace: guv-demo
+spec:
+  gateway: kyma-system/kyma-gateway
+  host: guv-demo-api.&lt;your cluster&gt;.kyma.ondemand.com
+  rules:
+    - accessStrategies:
+        - handler: no_auth
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - PATCH
+        - HEAD
+        - OPTIONS
+        - CONNECT
+        - TRACE
+      path: /.*
+  service:
+    name: guv-api
+    port: 8000
+</code></pre>
+<p>Select the button <code>Upload YAML</code> and insert the clipboard at the left text area.</p>
+<p><img alt="SAP BTP YAML Upload" src="../res/sap_btp_kyma_deployment_yaml.png" /></p>
+<p>Change the text <code>your cluster id</code> with the id of your cluster: e.g. <code>a12345678</code>. </p>
+<p>Tip: You will find this id in the url of the current Kyma dashboard view too.</p>
+<p>Push the <code>Upload</code> button now. You should get a success information.</p>
+<p><img alt="SAP BTP Deployment Success" src="../res/sap_btp_kyma_deployment_success.png" /></p>
+<p>Close the popup.</p>
+<h3 id="check-the-guv-api-service">Check the GUV API Service</h3>
+<p>Go to <code>Discovery and Network</code> and select <code>API Rules</code>. A new created rule <code>guv-demo-api</code> should be displayed. Select this rule.</p>
+<p><img alt="SAP BTP Kyma API rule" src="../res/sap_btp_kyma_api_rule.png" /></p>
+<p>You will find the endpoint URL of the GUV API service in <code>Metadata</code> -&gt; `host'. Select this URL.
+A local brower should be opened and You will see this output.</p>
+<p><img alt="SAP BTP API output" src="../res/sap_btp_kyma_api_endpoint.png" /></p>
+<p>Append a <code>/info</code> the the URL and You will get a detailed information.</p>
+<p><img alt="SAP BTP API output" src="../res/sap_btp_kyma_api_info.png" /></p>
+<h2 id="conclusion-and-further-information">Conclusion and further information</h2>
+<p>With these steps you have installed an GUV API service on top of an SAP HANA Cloud database within an kubernetes environment for demo purposes. </p>
+<h3 id="scalability">Scalability</h3>
+<p>The service runs with 5 replicas to demonstrate the scalabilty. You can modify this by changing the deployment <code>guv-api</code>.</p>
+<h3 id="configuration">Configuration</h3>
+<p>The service can be configured by environment variables. This can be done by changing the deployment.</p>
+<h3 id="security">Security</h3>
+<p>The demo service is configured unsecure by default and will be configured by environment variables. See the documentation for the GUV API Service.  </p>
+<p>You can add SAP BTP security options by changing the api rule.</p>
+<h3 id="additional-services">Additional services</h3>
+<p>The GUV API Service can be enhanced by other services in the same namespace like REDIS as Cache, AI or eventing services. See the corresponding documentation and add deployments to your namespace. </p>
 
 
 
