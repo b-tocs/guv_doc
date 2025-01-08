@@ -1,4 +1,4 @@
-# Welcome to the Graph Universe Documentation Page
+# Welcome to the Graph Universe Documentation
 
 ## What is the Graph Universe?
 
@@ -10,31 +10,9 @@ Client libraries can be used to integrate it into other systems for an hybrid ap
 
 ## Content
 
-1. Overview
-    - [Big Picture](overview/big_picture.md)
-    - Quickstart
-    - Demo scenario
-    - REST API
-    - Integration aspects
-    - Data model
-2. [Installation and configuration](installation.md)
-    - [Docker compose](installation/install_docker_compose.md)
-    - [SAP Kyma](installation/install_docker_compose.md)
-3. Graph API core component
-    - Deployment options
-    - Database options
-    - Configuration
-4. Plugins and connectors
-    - MQTT
-    - Redis
-    - Libretranslate
-    - Ollama
-5. Client libraries
-6. Security
-7. Features
-8. Use cases
-9. Extensions
-
-
----
-last modified: 08.01.2025
+- [Big Picture](overview/big_picture.md)
+- Quickstart
+- Demo scenario
+- REST API
+- Integration aspects
+- Data model
