@@ -9,7 +9,9 @@ theme:
 
 nav:
   - Overview: index.md
+  - Installation: installation.md 
 
 plugins:
   - mkdocstrings
   - search
+  - mermaid2
